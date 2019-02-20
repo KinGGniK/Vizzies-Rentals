@@ -1,0 +1,73 @@
+﻿@model CarRental.Models.DateViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Car Rental Form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body class="background">
+
+    @RenderPage("_NavBar.cshtml")
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="Index">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <div class="form">
+        @using (Html.BeginForm("CarRental", "Home", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h2 class="center">Choose your dates</h2>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="flex">
+                    <div class="date-group">
+                        <h5>Pick-Up Date</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PickUpDate, new { htmlAttributes = new { @min = "2018-13-13", @max = "2019-12-31", @id = "datefield", @type = "date", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PickUpDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="date-group">
+                        <h5>Return Date</h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ReturnDate, new { htmlAttributes = new { @min = "2018-13-12", @max = "2019-12-31", @id = "returnfield", @type = "date", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="btnz col-md-offset-2 col-md-10">
+                        <input type="submit" value="Select Your Vehicle" class="mcolor btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>

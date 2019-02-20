@@ -1,0 +1,95 @@
+﻿@model CarRental.Models.ReturnViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport" />
+    <title>Return your Vehicle</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+
+<body>
+
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="Index">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    @using (Html.BeginForm("ReturnVehicle", "Home", null, FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <h1 class="center">Return your Vehicle</h1>
+        </div><br />
+
+        <div>
+            <h4 class="center">Please Enter Your Reservation Number along with your First and Last Name.</h4>
+        </div>
+
+        <div>
+            <h6 class="text-danger">@TempData["Returned"]</h6>
+            <h6 class="text-danger">@TempData["NoReserve"]</h6>
+        </div>
+        <div class="flex">
+            <div class="date-group">
+                <h5>Reserve Number</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ReserveNum, new { htmlAttributes = new { @onkeypress = "return isNumber(event)", @maxlength = 5, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReserveNum, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="date-group">
+                <h5>First Name</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @maxlength = 25, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="date-group">
+                <h5>Last Name</h5>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @maxlength = 36, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="btnz col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign In" class="mcolor btn btn-default" />
+            </div>
+        </div>
+    }
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>
+

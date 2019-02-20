@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Total Rental Charge</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+
+        <a class="back" href="Index">
+            <i class="back material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <h1 class="center">Total Rental Charge</h1>
+
+    <div class="container">
+        <div class="center flex">
+            <div class="rent-field">
+                <h4>Full Name</h4>
+                <h5>@ViewBag.Reservation.FirstName @ViewBag.Reservation.LastName</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Pick-Up Date</h4>
+                <h5>@ViewBag.Dates.PickUp</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Return Date</h4>
+                <h5>@ViewBag.Dates.Return</h5>
+            </div><br />
+            </div>
+
+            <div class="center flex">
+            <div class="rent-field">
+                <h4 class="center">Vehicle Class</h4>
+                <h5>@ViewBag.Reservation.CarType</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Reservation Total</h4>
+                <h5>$@ViewBag.Reservation.PreTotal</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Total Rental Charge</h4>
+                <h5>$@ViewBag.Reservation.RentalTotal</h5>
+            </div><br />
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Are You Sure?</h4>
+                <p>Please double check your information to make sure it is all correct.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="ChargeConfirmed" class="btn btn-flat none">Confirm Payment</a>
+                <input type="button" value="Go Back" class="mcolor modal-close btn">
+            </div>
+        </div>
+
+        <div class="form-btn">
+            <div class="">
+                <a class="mcolor waves-effect waves-light btn modal-trigger" href="#modal1">Continue to Payment</a>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>
+

@@ -1,0 +1,106 @@
+﻿img {
+    width: 100%;
+}
+.form{
+    width: 55%;
+    margin: auto;
+}
+.text-danger{
+    color: red !important;
+}
+.btn-large {
+    height: 125px;
+    padding: 16% 28px;
+}
+.btn:hover{
+    background-color: #1780CC !important;
+}
+.none:hover{
+    background-color: transparent !important;
+}
+.mcolor {
+    background-color: #004A7F !important;
+}
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.container > .flex{
+    padding: 3%;
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+.flex-total{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+.marg0{
+    margin: 0;
+}
+.date-group{
+    padding: 1%;
+    width: 50%;
+    margin: auto;
+}
+form{
+    padding: 2%;
+}
+.btnz {
+    margin: 5% 35%;
+    display: flex;
+    justify-content: center;
+}
+.esti-btnz {
+    margin: 7% 5%;
+    display: flex;
+    justify-content: space-around;
+}
+#btn-hover :hover{
+    background-color: #999 !important;
+
+}
+.backcolor {
+    background-color: #CC8317;
+}
+.back{
+    color: white;
+    margin: 2%;
+}
+.form-btn{
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+}
+.btn-flat:focus {
+    background-color: rgba(0,0,0,0.1) !important;
+}
+#header {
+    line-height: 170%;
+}
+#home-btn{
+    margin: 7%;
+}
+                    /*Reservation Styling*/
+.res-info, .res-car{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.res-car {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.res-form {
+    margin: 7% 5%;
+}
+.info-field{
+    padding: 5%;
+    width: 100%;
+}
+.res-info > .flex{
+    flex-grow: 1;
+}

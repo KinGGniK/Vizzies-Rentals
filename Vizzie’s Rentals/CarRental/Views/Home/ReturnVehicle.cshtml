@@ -1,0 +1,72 @@
+﻿@model CarRental.Models.DateMilesViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Return Vehicle</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+            @*<div class="nav-wrapper">
+                    <div class="col s12">
+                        <a href="ReturnVehicleForm" class="breadcrumb">Sign-In with Reserve #</a>
+                        <a href="ReturnVehicle" class="breadcrumb">Mileage Used</a>
+                    </div>
+                </div>*@
+        </nav>
+    </div>
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="@Url.Action("CarRental", "Home", new { carRental = Model })">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <div>
+        <h2 class="center">Welcome @ViewBag.User.FirstName @ViewBag.User.LastName!</h2>
+    </div><br />
+
+    @using (Html.BeginForm("RentalCharge", "Home", null, FormMethod.Post))
+    {
+        <h4 class="center">Please Enter the Amount of Miles Used</h4>
+
+        <div class="date-group">
+            <h5>Miles</h5>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Miles, new { htmlAttributes = new { @placeholder = "Mileage Used", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Miles, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="btnz col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit Mileage" class="mcolor btn btn-default" />
+            </div>
+        </div>
+    }
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src=" ~/init.js?v=1" type="text/javascript"></script>

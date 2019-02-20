@@ -1,0 +1,146 @@
+﻿@model CarRental.Models.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reserve Car</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="Index">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <h1 class="center">Please Enter the Following Information</h1>
+
+    @using (Html.BeginForm("ReserveConfirm", "Home", null, FormMethod.Post, new { @class = "res-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="flex">
+            <div class="res-info">
+                <div>
+                    <h2 class="center">Contact Information</h2>
+                </div>
+                <div class="flex">
+                    <div class="info-field">
+                        <h6>First Name*</h6>
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @maxlength = 20, @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="info-field">
+                        <h6>Last Name*</h6>
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @maxlength = 36, @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="info-field">
+                        <h6>Phone Number*</h6>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @maxlength = 10, @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @onkeypress = "return isNumber(event)", @class = "text-danger" })
+                    </div><br />
+
+                    <div class="info-field">
+                        <h6>Email Address*</h6>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @maxlength = 40, @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div><br />
+                </div>
+            </div>
+
+            <div class="center res-car">
+
+                <div>
+                    <h2>Reservation Details</h2>
+                </div>
+
+                <div class="flex">
+                    <div>
+                        <h5>Pick-Up Date</h5>
+                        <h6>@ViewBag.Dates.PickUp</h6>
+                    </div>
+
+                    <div>
+                        <h5>Return Date</h5>
+                        <h6>@ViewBag.Dates.Return</h6>
+                    </div>
+                </div>
+                <div>
+                    <h5>Days Rented</h5>
+                    <h6>@ViewBag.CarView.DateView.numDays</h6>
+                </div><br />
+
+                <div class="flex">
+                    <div>
+                        <h5>Vehicle Class</h5>
+                        <h6>@ViewBag.CarView.Car.CarType</h6>
+                    </div>
+
+                    <div>
+                        <h5>Cost per Day</h5>
+                        <h6>$@ViewBag.CarView.Car.Price</h6>
+                    </div>
+                </div>
+
+                <div>
+                    <h5>Estimated Total</h5>
+                    <h4>$@ViewBag.CarView.Car.DaysTotal</h4>
+                </div><br />
+            </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Are You Sure?</h4>
+                <p>By clicking confirm you are confirming this payment.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-flat none" value="Submit">Confirm</button>
+                <input type="button" value="Go Back" class="mcolor modal-close btn">
+            </div>
+        </div>
+
+
+
+        <div class="esti-btnz">
+            <a class="mcolor btn waves-effect waves-light" id="ebcolor" href="@Url.Action("CarRentalForm", "Home")">Make another Estimate</a><br />
+            <a class="mcolor btn waves-effect waves-light modal-trigger" href="#modal1">Confirm Rental</a>
+        </div>
+        <br />
+        <br />
+
+    }
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>

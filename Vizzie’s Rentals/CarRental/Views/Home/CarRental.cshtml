@@ -1,0 +1,73 @@
+﻿@using CarRental.Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Car Rental</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="~/RentStyle.css?v=1" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="CarRentalForm">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <div class="form">
+
+        <br />
+        <h2 class="center">Vehicle Selection</h2>
+
+        <hr />
+        @using (Html.BeginForm("EstimatePage", "Home", null, FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h5 class="text-danger">@TempData["BadCar"]</h5>
+            <select name="choice" class="select">
+                <option value="" disabled selected>Choose Your Vehicle Class</option>
+                @foreach (Car c in ViewBag.Cars)
+                {
+                    <option name="choice" value=@c.CarType>@c.CarType &nbsp $@c.Price/Day - Total: $@c.DaysTotal</option>
+                }
+            </select>
+
+            <div class="form-group">
+                <div class="btnz col-md-offset-2 col-md-10">
+                    <input type="submit" value="Check Your Estimate" class="mcolor btn btn-default" />
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>

@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reserve Confirmation</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+
+        <a class="back" href="Index">
+            <i class="back material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <h1 class="center">Reservation Confirmation</h1>
+
+    <div class="form-btn">
+        <h2>Your Reservation Number is @ViewBag.ReserveNum.</h2>
+    </div>
+
+    <div class="form-group">
+        <div class="btnz col-md-offset-2 col-md-10">
+            <h5>Lets go &nbsp;</h5>
+            <a class="btn-floating btn-large waves-effect waves-light mcolor" href="Index"><i class="material-icons">home</i></a>
+        </div>
+    </div>
+
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>

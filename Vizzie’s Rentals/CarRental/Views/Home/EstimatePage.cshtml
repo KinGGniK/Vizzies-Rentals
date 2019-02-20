@@ -1,0 +1,88 @@
+﻿@model CarRental.Models.CarViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Rental Estimate</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/RentStyle.css?v=1" />
+</head>
+<body>
+
+    <!-- NavBar -->
+    <div class="navbar-fixed">
+        <nav class="backcolor" role="navigation">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <a href="Index" class="center brand-logo">Vince's Rental Shop</a>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <a class="mcolor btn-floating btn-large waves-effect waves-light back" href="CarRental">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <div class="center">
+        <h2>Reservation Estimation</h2>
+    </div>
+
+    <div class="container">
+        <div class="center flex">
+            <div class="rent-field">
+                <h4 class="center">Pick-Up Date</h4>
+                <h5>@ViewBag.Dates.PickUp</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Return Date</h4>
+                <h5>@ViewBag.Dates.Return</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Days Rented</h4>
+                <h5 class="center">@ViewBag.CarView.DateView.numDays</h5>
+            </div><br />
+        </div>
+
+        <div class="flex">
+            <div class="rent-field">
+                <h4 class="center">Vehicle Class</h4>
+                <h5 class="center">@ViewBag.CarView.Car.CarType</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Vehicle Price Per Day</h4>
+                <h5 class="center">$@ViewBag.CarView.Car.Price</h5>
+            </div><br />
+
+            <div class="rent-field">
+                <h4 class="center">Estimated Total</h4>
+                <h5 class="center">$@ViewBag.CarView.Car.DaysTotal</h5>
+            </div><br />
+        </div>
+    </div>
+
+    <div class="esti-btnz">
+        <a href="CarRentalForm" class="mcolor btn btn-default">Try Another Estimate</a>
+        <a href="ReserveCar" class="mcolor btn btn-default">Reserve Now</a>
+    </div>
+    @RenderPage("_Footer.cshtml")
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="~/jscript.js?v=1" type="text/javascript"></script>
+<script src="~/init.js?v=1" type="text/javascript"></script>
